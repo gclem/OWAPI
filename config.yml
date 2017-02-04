@@ -4,7 +4,7 @@ component:
   components:
     kyoukai:
       app: owapi.app:app
-      debug: True
+      debug: False
     redis:
       address: 127.0.0.1
       db: 1

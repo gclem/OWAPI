@@ -16,7 +16,7 @@ SECOND_REGEX = re.compile(r"([0-9]*\.?[0-9]*) seconds?")
 PERCENT_REGEX = re.compile(r"([0-9]{1,3})\s?\%")
 
 
-async def with_cache(ctx: HTTPRequestContext, func, *args, expires=300, cache_404=False):
+async def with_cache(ctx: HTTPRequestContext, func, *args, expires=20, cache_404=False):
     """
     Run a coroutine with cache.
 

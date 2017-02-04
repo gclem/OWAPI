@@ -40,14 +40,14 @@ class APIComponent(ContainerComponent):
     Container for other components. I think.
     """
 
-    def __init__(self, components, use_redis=True, do_profiling=False, disable_ratelimits=False):
+    def __init__(self, components, use_redis=True, do_profiling=False, disable_ratelimits=True):
         super().__init__(components)
         app.config["owapi_use_redis"] = use_redis
         app.config["owapi_do_profiling"] = do_profiling
         app.config["owapi_disable_ratelimits"] = disable_ratelimits
 
     async def start(self, ctx):
-        self.add_component('kyoukai', KyoukaiComponent, ip="127.0.0.1", port=4444,
+        self.add_component('kyoukai', KyoukaiComponent, ip="0.0.0.0", port=4444,
                            app="app:app", template_renderer=None)
         if app.config["owapi_use_redis"]:
             from asphalt.redis.component import RedisComponent

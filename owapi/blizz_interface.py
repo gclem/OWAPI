@@ -21,12 +21,12 @@ B_HEROES_URL = B_BASE_URL + "heroes"
 B_HERO_URL = B_HEROES_URL + "/{hero}"
 
 # The currently available specific regions.
-AVAILABLE_REGIONS = ["/eu", "/us", "/kr"]
+AVAILABLE_REGIONS = ["/eu"]
 
 logger = logging.getLogger("OWAPI")
 
 
-async def get_page_body(ctx: HTTPRequestContext, url: str, cache_time=300, cache_404=False) -> str:
+async def get_page_body(ctx: HTTPRequestContext, url: str, cache_time=10, cache_404=False) -> str:
     """
     Downloads page body from PlayOverwatch and caches it.
     """
@@ -57,7 +57,7 @@ def _parse_page(content: str) -> etree._Element:
 
 
 async def get_user_page(ctx: HTTPRequestContext, battletag: str, platform: str = "pc", region: str = "us",
-                        cache_time=300, cache_404=False) -> etree._Element:
+                        cache_time=10, cache_404=False) -> etree._Element:
     """
     Downloads the BZ page for a user, and parses it.
     """
